@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{{ asset('dashboards/assets/images/favicon-32x32.png') }}" type="image/png" />
+	<!--plugins-->
+	<link href="{{ asset('dashboards/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('dashboards/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('dashboards/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('dashboards/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+	<!-- loader-->
+	<link href="{{ asset('dashboards/assets/css/pace.min.css') }}" rel="stylesheet" />
+	<script src="{{ asset('dashboards/assets/js/pace.min.js') }}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{{ asset('dashboards/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('dashboards/assets/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('dashboards/assets/css/icons.css') }}" rel="stylesheet">
+	<!-- Theme Style CSS -->
+	<link rel="stylesheet" href="{{ asset('dashboards/assets/css/dark-theme.css') }}" />
+	<link rel="stylesheet" href="{{ asset('dashboards/assets/css/semi-dark.css') }}" />
+	<link rel="stylesheet" href="{{ asset('dashboards/assets/css/header-colors.css') }}" />
+	<title>Rukada - Vendor Dashboard</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <style>
+        #toast-container > .toast-custom {
+            background-color:orange;
+        }
+    </style>
+</head>
+
+<body>
+	<!--wrapper-->
+	<div class="wrapper">
+		<!--sidebar wrapper -->
+            @include('dashboards.vendor.layouts.leftSidebar')
+		<!--end sidebar wrapper -->
+		<!--start header -->
+            @include('dashboards.vendor.layouts.header')
+		<!--end header -->
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+            @yield('pageContent')
+		</div>
+		<!--end page wrapper -->
+		<!--start overlay-->
+		<div class="overlay toggle-icon"></div>
+		<!--end overlay-->
+		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+            @include('dashboards.vendor.layouts.footer')
+	</div>
+	<!--end wrapper-->
+	<!--start switcher-->
+        <!--remove start switcher-->
+	<!--end switcher-->
+	<!-- Bootstrap JS -->
+	<script src="{{ asset('dashboards/assets/js/bootstrap.bundle.min.js') }}"></script>
+	<!--plugins-->
+	<script src="{{ asset('dashboards/assets/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('dashboards/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+	<script src="{{ asset('dashboards/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+	<script src="{{ asset('dashboards/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+	<script src="{{ asset('dashboards/assets/plugins/chartjs/js/Chart.min.js') }}"></script>
+	<script src="{{ asset('dashboards/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('dashboards/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+	<script src="{{ asset('dashboards/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
+	<script src="{{ asset('dashboards/assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
+	<script src="{{ asset('dashboards/assets/plugins/jquery-knob/excanvas.js') }}"></script>
+	<script src="{{ asset('dashboards/assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
+	  <script>
+		  $(function() {
+			  $(".knob").knob();
+		  });
+	  </script>
+	  <script src="{{ asset('dashboards/assets/js/index.js') }}"></script>
+	<!--app JS-->
+	<script src="{{ asset('dashboards/assets/js/app.js') }}"></script>
+
+	<!--toastr JS-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    @if(Session::has('message'))
+        <script type="text/javascript" >
+            const toastrSetup = { alertType:"{{ Session::get('alertType','info') }}", massage:"{{ Session::get('message') }}" };
+        </script>
+        <script src="{{ asset('dashboards/assets/js/my-js/toastr.js') }}"></script>
+    @endif
+
+    <!--previewImages JS-->
+    <script type="text/javascript">
+        const previewImagesSetup = { isShowNumberBadge:false, badgeNumberStartAt:1, badgeColor:"bg-primary", inputFileName:"image_filename", imageDivId:"preview"};
+    </script>
+    <script src="{{ asset('dashboards/assets/js/my-js/previewImages.js') }}"></script>
+    <!--year-select JS-->
+
+    <script src="{{ asset('dashboards/assets/js/my-js/year-select.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            $('.yearselect').yearselect({
+                order:'asc', // or desc
+                displayAsValue:false
+            });
+
+        });
+    </script>
+</body>
+
+</html>
